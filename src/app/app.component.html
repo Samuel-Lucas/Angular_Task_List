@@ -3,11 +3,11 @@
 <ul class="animated flipInX" *ngIf="mode=='list'">
   <p class="text-center" *ngIf="todos.length==0"><small>Você não tem nenhuma tarefa hoje</small></p>
   <li *ngFor="let todo of todos">
-    {{ todo.title }} | 
+    {{ todo.title }}
     <div>
-      <button *ngIf="!todo.done" (click)="markAsDone(todo)">Concluir</button>
-      <button *ngIf="todo.done" (click)="markAsUndone(todo)">Refazer</button>
-      <button (click)="remove(todo)">Remover</button>
+      <button *ngIf="!todo.done" (click)="markAsDone(todo)"><i class="far fa-check-circle"></i></button>
+      <button *ngIf="todo.done" (click)="markAsUndone(todo)"><i class="fas fa-check-circle"></i></button>
+      <button (click)="remove(todo)"><i class="far fa-trash-alt"></i></button>
     </div>
   </li>
 </ul>
@@ -15,7 +15,7 @@
 <div id="modal" *ngIf="mode=='add'" class="animated flipInX">
   <form [formGroup]="form">
     <h1 class="text-center">Tarefa:</h1>
-    <input type="text" placeholder="Título da tarefa" maxLength="60" formControlName="title"/>
+    <input type="text" placeholder="Título da tarefa" maxLength="60" formControlName="title"/><br />
     <small class="danger" *ngIf="form.controls.title.invalid && !form.controls.pristine">
       Este campo deve conter entre 4 e 60 caracteres <br />
     </small>

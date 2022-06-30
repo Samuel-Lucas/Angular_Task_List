@@ -9,6 +9,7 @@ import { Todo } from 'src/models/todo.model';
 })
 
 export class AppComponent {
+  public mode: string = 'list';
   public todos: Todo[] = [];
   public title: string = 'Minhas tarefas';
   public form: FormGroup;
@@ -54,6 +55,10 @@ export class AppComponent {
   markAsUndone(todo: Todo) {
     todo.done = false;
     this.save()
+  }
+
+  changeMode(mode: string) {
+    this.mode = mode;
   }
 
   save() {

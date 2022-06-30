@@ -1,6 +1,7 @@
 <h1>{{ title }}</h1>
 
 <ul>
+  <p *ngIf="todos.length==0"><small>Você não tem nenhuma tarefa hoje</small></p>
   <li *ngFor="let todo of todos">
     {{ todo.id }}. {{ todo.title }} | 
     <button *ngIf="!todo.done" (click)="markAsDone(todo)">Concluir</button> |
@@ -14,6 +15,6 @@
     <label>Tarefa: </label>
     <input type="text" placeholder="Título da tarefa" maxLength="60" formControlName="title"/>
     <small *ngIf="form.controls.title.invalid && !form.controls.pristine">Este campo deve conter entre 4 e 60 caracteres</small>
-    <button [disabled]="form.invalid">Salvar</button>
+    <button [disabled]="form.invalid" (click)="add()">Salvar</button>
   </fieldset>
 </form>
